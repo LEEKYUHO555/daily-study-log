@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Study Log - 나의 학습 여정</title>
+    <meta name="description" content="날짜별로 학습 내용을 정리하고 진행 상황을 추적하는 개인 스터디 로그">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    <h1>Daily Study Log</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="add-study-btn" id="addStudyBtn">
+                        <i class="fas fa-plus"></i>
+                        새 스터디 추가
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>나의 학습 여정을 기록하세요</h2>
+                <p>매일의 학습 내용을 체계적으로 정리하고, 성장하는 모습을 확인해보세요.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalStudies">0</span>
+                        <span class="stat-label">총 학습 일수</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalTags">0</span>
+                        <span class="stat-label">학습 주제</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="currentStreak">0</span>
+                        <span class="stat-label">연속 학습</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+        <div class="container">
+            <div class="controls-content">
+                <div class="search-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="제목, 내용, 태그로 검색...">
+                        <button class="clear-search" id="clearSearch">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label for="tagFilter">태그 필터:</label>
+                        <select id="tagFilter">
+                            <option value="">모든 태그</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sortBy">정렬:</label>
+                        <select id="sortBy">
+                            <option value="date-desc">최신순</option>
+                            <option value="date-asc">오래된순</option>
+                            <option value="title-asc">제목순</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Cards -->
+    <main class="main-content">
+        <div class="container">
+            <div class="studies-grid" id="studiesGrid">
+                <!-- Study cards will be dynamically generated here -->
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>아직 학습 기록이 없습니다</h3>
+                <p>첫 번째 학습 내용을 추가해보세요!</p>
+                <button class="btn-primary" onclick="document.getElementById('addStudyBtn').click()">
+                    <i class="fas fa-plus"></i>
+                    첫 스터디 추가하기
+                </button>
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="empty-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>검색 결과가 없습니다</h3>
+                <p>다른 키워드로 검색해보세요.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Study Modal -->
+    <div class="modal" id="addStudyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>새 스터디 추가</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="modal-body" id="addStudyForm">
+                <div class="form-group">
+                    <label for="studyDate">날짜</label>
+                    <input type="date" id="studyDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studyTitle">제목</label>
+                    <input type="text" id="studyTitle" placeholder="오늘 학습한 내용의 제목을 입력하세요" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studyDescription">설명</label>
+                    <textarea id="studyDescription" placeholder="학습 내용에 대한 간단한 설명을 입력하세요" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studyTags">태그</label>
+                    <input type="text" id="studyTags" placeholder="JavaScript, React, CSS (쉼표로 구분)">
+                    <small>쉼표(,)로 구분하여 여러 태그를 입력할 수 있습니다</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">취소</button>
+                    <button type="submit" class="btn-primary">추가하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Daily Study Log. 지속적인 학습으로 성장하는 개발자가 되어보세요.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/LEEKYUHO555/daily-study-log" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
+

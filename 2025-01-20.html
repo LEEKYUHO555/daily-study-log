@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript ES6+ 기초 - Daily Study Log</title>
+    <meta name="description" content="Arrow Functions, Destructuring, Template Literals 등 ES6의 주요 기능들을 학습했습니다.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/study-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <i class="fas fa-book-open"></i>
+                        <h1>Daily Study Log</h1>
+                    </a>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="../index.html" class="btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        목록으로
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Study Navigation -->
+    <nav class="study-nav">
+        <div class="container">
+            <div class="nav-content">
+                <button class="nav-btn" id="prevStudy" title="이전 스터디">
+                    <i class="fas fa-chevron-left"></i>
+                    <span>이전</span>
+                </button>
+                
+                <div class="study-info">
+                    <span class="study-date">2025년 1월 20일 월요일</span>
+                    <h2 class="study-title">JavaScript ES6+ 기초</h2>
+                </div>
+                
+                <button class="nav-btn" id="nextStudy" title="다음 스터디">
+                    <span>다음</span>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="study-content">
+        <div class="container">
+            <article class="study-article">
+                <!-- Study Tags -->
+                <div class="study-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">ES6</span>
+                    <span class="tag">Frontend</span>
+                </div>
+
+                <!-- Study Description -->
+                <div class="study-description">
+                    <p>Arrow Functions, Destructuring, Template Literals 등 ES6의 주요 기능들을 학습했습니다. 모던 JavaScript 개발에 필수적인 문법들을 실습을 통해 익혔습니다.</p>
+                </div>
+
+                <!-- Study Content -->
+                <div class="content-section">
+                    <h3>📚 학습 내용</h3>
+                    <p>오늘은 ES6(ECMAScript 2015)에서 도입된 주요 기능들을 학습했습니다. ES6는 JavaScript의 큰 변화를 가져온 버전으로, 현대적인 JavaScript 개발의 기초가 되는 문법들을 제공합니다.</p>
+                    
+                    <h4>1. Arrow Functions (화살표 함수)</h4>
+                    <p>화살표 함수는 함수를 더 간결하게 작성할 수 있게 해주며, <code>this</code> 바인딩이 기존 함수와 다르게 동작합니다.</p>
+                    
+                    <h4>2. Destructuring (구조 분해 할당)</h4>
+                    <p>배열이나 객체의 속성을 해체하여 그 값을 개별 변수에 담을 수 있게 해주는 JavaScript 표현식입니다.</p>
+                    
+                    <h4>3. Template Literals (템플릿 리터럴)</h4>
+                    <p>백틱(`)을 사용하여 문자열을 생성하며, 문자열 보간과 여러 줄 문자열을 쉽게 만들 수 있습니다.</p>
+                    
+                    <h4>4. Let과 Const</h4>
+                    <p>블록 스코프를 가지는 새로운 변수 선언 방식으로, <code>var</code>의 문제점들을 해결합니다.</p>
+                </div>
+
+                <!-- Code Examples -->
+                <div class="content-section">
+                    <h3>💻 코드 예제</h3>
+                    
+                    <h4>Arrow Functions</h4>
+                    <pre><code class="language-javascript">// 기존 함수 표현식
+const add = function(a, b) {
+    return a + b;
+};
+
+// 화살표 함수
+const add = (a, b) => a + b;
+
+// 여러 줄 화살표 함수
+const multiply = (a, b) => {
+    const result = a * b;
+    return result;
+};
+
+// 배열 메서드와 함께 사용
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]</code></pre>
+
+                    <h4>Destructuring</h4>
+                    <pre><code class="language-javascript">// 배열 구조 분해
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
+
+// 객체 구조 분해
+const person = {
+    name: 'John',
+    age: 30,
+    city: 'Seoul'
+};
+
+const { name, age, city } = person;
+console.log(name); // 'John'
+
+// 기본값 설정
+const { name, age, country = 'Korea' } = person;
+console.log(country); // 'Korea'
+
+// 함수 매개변수에서 구조 분해
+function greet({ name, age }) {
+    console.log(`안녕하세요, ${name}님! ${age}세이시군요.`);
+}
+
+greet(person); // 안녕하세요, John님! 30세이시군요.</code></pre>
+
+                    <h4>Template Literals</h4>
+                    <pre><code class="language-javascript">const name = 'JavaScript';
+const version = 'ES6';
+
+// 문자열 보간
+const message = `안녕하세요, ${name} ${version}입니다!`;
+console.log(message); // 안녕하세요, JavaScript ES6입니다!
+
+// 여러 줄 문자열
+const multiLine = `
+    첫 번째 줄
+    두 번째 줄
+    세 번째 줄
+`;
+
+// 표현식 사용
+const a = 5;
+const b = 10;
+console.log(`${a} + ${b} = ${a + b}`); // 5 + 10 = 15
+
+// 함수 호출
+function formatCurrency(amount) {
+    return `₩${amount.toLocaleString()}`;
+}
+
+const price = 1000000;
+console.log(`가격: ${formatCurrency(price)}`); // 가격: ₩1,000,000</code></pre>
+
+                    <h4>Let과 Const</h4>
+                    <pre><code class="language-javascript">// var의 문제점
+function varExample() {
+    if (true) {
+        var x = 1;
+    }
+    console.log(x); // 1 (함수 스코프)
+}
+
+// let과 const의 블록 스코프
+function letConstExample() {
+    if (true) {
+        let y = 1;
+        const z = 2;
+    }
+    // console.log(y); // ReferenceError
+    // console.log(z); // ReferenceError
+}
+
+// const는 재할당 불가
+const PI = 3.14159;
+// PI = 3.14; // TypeError
+
+// 하지만 객체의 속성은 변경 가능
+const person = { name: 'John' };
+person.name = 'Jane'; // 가능
+person.age = 25; // 가능</code></pre>
+                </div>
+
+                <!-- Key Points -->
+                <div class="content-section">
+                    <h3>🔑 핵심 포인트</h3>
+                    <ul>
+                        <li><strong>Arrow Functions</strong>: 간결한 문법과 lexical this 바인딩이 특징</li>
+                        <li><strong>Destructuring</strong>: 코드를 더 읽기 쉽고 간결하게 만들어줌</li>
+                        <li><strong>Template Literals</strong>: 문자열 조작이 훨씬 편리해짐</li>
+                        <li><strong>Let/Const</strong>: 블록 스코프로 더 예측 가능한 코드 작성 가능</li>
+                        <li>ES6+ 문법은 현대 JavaScript 개발의 표준</li>
+                        <li>Babel 등의 트랜스파일러로 구형 브라우저 지원 가능</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h4>💡 실무 팁</h4>
+                        <p>ES6+ 문법을 사용할 때는 팀의 코딩 컨벤션을 확인하고, ESLint 같은 도구를 사용하여 일관된 코드 스타일을 유지하세요.</p>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="content-section">
+                    <h3>🔗 참고 자료</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide" target="_blank">MDN JavaScript 가이드</a></li>
+                        <li><a href="https://es6.io/" target="_blank">ES6 for Everyone</a></li>
+                        <li><a href="https://github.com/lukehoban/es6features" target="_blank">ES6 Features Overview</a></li>
+                        <li><a href="https://babeljs.io/learn-es2015/" target="_blank">Babel ES2015 Guide</a></li>
+                    </ul>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="content-section">
+                    <h3>🎯 다음 학습 계획</h3>
+                    <ul>
+                        <li>ES6 Modules (import/export) 학습</li>
+                        <li>Promise와 async/await 심화 학습</li>
+                        <li>ES2017+ 새로운 기능들 탐색</li>
+                        <li>실제 프로젝트에 ES6+ 문법 적용해보기</li>
+                    </ul>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p><small>JavaScript 기초 학습 진행률: 75%</small></p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Daily Study Log. 지속적인 학습으로 성장하는 개발자가 되어보세요.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/LEEKYUHO555/daily-study-log" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../js/study-page.js"></script>
+</body>
+</html>
+

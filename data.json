@@ -1,0 +1,67 @@
+{
+  "studies": [
+    {
+      "id": 1,
+      "date": "2025-01-20",
+      "title": "JavaScript ES6+ 기초",
+      "description": "Arrow Functions, Destructuring, Template Literals 등 ES6의 주요 기능들을 학습했습니다.",
+      "tags": ["JavaScript", "ES6", "Frontend"],
+      "filename": "2025-01-20.html"
+    },
+    {
+      "id": 2,
+      "date": "2025-01-19",
+      "title": "React Hooks 심화",
+      "description": "useState, useEffect, useContext 등 React Hooks의 고급 사용법을 익혔습니다.",
+      "tags": ["React", "Hooks", "Frontend"],
+      "filename": "2025-01-19.html"
+    },
+    {
+      "id": 3,
+      "date": "2025-01-18",
+      "title": "CSS Grid Layout",
+      "description": "CSS Grid를 활용한 복잡한 레이아웃 구성 방법을 학습했습니다.",
+      "tags": ["CSS", "Layout", "Frontend"],
+      "filename": "2025-01-18.html"
+    },
+    {
+      "id": 4,
+      "date": "2025-01-17",
+      "title": "Node.js Express 서버 구축",
+      "description": "Express.js를 사용하여 RESTful API 서버를 구축하는 방법을 학습했습니다.",
+      "tags": ["Node.js", "Express", "Backend", "API"],
+      "filename": "2025-01-17.html"
+    },
+    {
+      "id": 5,
+      "date": "2025-01-16",
+      "title": "Git 브랜치 전략",
+      "description": "Git Flow와 GitHub Flow 등 다양한 브랜치 전략에 대해 학습했습니다.",
+      "tags": ["Git", "Version Control", "DevOps"],
+      "filename": "2025-01-16.html"
+    }
+  ],
+  "tags": [
+    "JavaScript",
+    "React",
+    "CSS",
+    "HTML",
+    "Node.js",
+    "Express",
+    "Git",
+    "Frontend",
+    "Backend",
+    "API",
+    "ES6",
+    "Hooks",
+    "Layout",
+    "Version Control",
+    "DevOps"
+  ],
+  "settings": {
+    "theme": "light",
+    "defaultView": "grid",
+    "defaultSort": "date-desc"
+  }
+}
+
